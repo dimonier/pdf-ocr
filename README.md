@@ -1,2 +1,60 @@
-# pdf_ocr
-Extracts text from PDF comtaining scanned images to a text file
+# PDF OCR
+
+Скрипт для распознавания текста из PDF-файлов, содержащих отсканированные документы или изображения.
+
+## Описание
+
+`extract_text.py` - это Python-скрипт, который:
+- Извлекает изображения из PDF-файла
+- Распознает текст на этих изображениях с помощью Tesseract OCR
+- Сохраняет распознанный текст в файл
+
+## Требования
+
+- Python 3.6+
+- Tesseract OCR ([скачать](https://github.com/UB-Mannheim/tesseract/wiki))
+- Python-библиотеки (установка через `pip install -r requirements.txt`):
+  - pypdf
+  - pytesseract
+  - Pillow
+
+## Установка
+
+1. Установите Tesseract OCR
+2. Клонируйте репозиторий
+3. Установите зависимости:
+```bash
+pip install -r requirements.txt
+```
+
+## Использование
+
+### Через BAT-файл
+```bash
+extract_text.bat path/to/your/file.pdf
+```
+
+### Напрямую через Python
+```bash
+python extract_text.py path/to/your/file.pdf
+```
+
+Результат будет сохранен в текстовый файл с тем же именем, что и исходный PDF (например, `document.pdf` → `document.txt`).
+
+## Поддерживаемые языки
+
+По умолчанию скрипт настроен на распознавание русского и английского текста (`rus+eng`). Они должны быть установлены вместе с Tesseract.
+Для использования других языков необходимо установить соответствующие языковые пакеты Tesseract и изменить параметр `lang` в вызове функции.
+
+## Особенности
+
+- Выводит прогресс распознавания в консоль
+- Показывает точность распознавания для каждого изображения
+- Сохраняет результат в кодировке UTF-8
+
+## Примечание
+
+Если Tesseract установлен не в стандартную директорию, раскомментируйте и отредактируйте строку:
+```python
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+```
